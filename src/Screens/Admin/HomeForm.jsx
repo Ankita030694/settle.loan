@@ -78,24 +78,42 @@ function HomeForm() {
   };
 
   const handleDateFilter = () => {
-    const from = new Date(fromDate);
-    const to = new Date(toDate);
-    const filteredData = homeData.filter((item) => {
-      const itemDate = new Date(item.date);
-      return itemDate >= from && itemDate <= to;
-    });
-    setFilteredHomeData(filteredData);
+    if (fromDate && toDate) {
+      const from = new Date(fromDate);
+      const to = new Date(toDate);
+      from.setHours(0, 0, 0, 0);
+      to.setHours(23, 59, 59, 999);
+      const filteredData = homeData.filter((item) => {
+        const itemDate = new Date(item.date);
+        return itemDate >= from && itemDate <= to;
+      });
+  
+      setFilteredHomeData(filteredData);
+    } else {
+      alert("Please select both from and to dates");
+    }
   };
+  
 
   const deleteBtnClick = async (e) => {
     e.preventDefault();
-    const docRef = doc(db, "homefromrecord", e.target.id);
-    await deleteDoc(docRef).then(() => {
-      alert("Deleted Successfully");
-      fetchHomeFormData(); // Refresh data after delete
-    });
+    const confirmDelete = window.confirm("Are you sure you want to delete this entry?");
+    
+    if (confirmDelete) {
+      const docRef = doc(db, "homefromrecord", e.target.id);
+      
+      try {
+        await deleteDoc(docRef);
+        setHomeData((prevData) => prevData.filter((item) => item.id !== e.target.id));
+        setFilteredHomeData((prevData) => prevData.filter((item) => item.id !== e.target.id));
+        alert("Deleted Successfully");
+        
+      } catch (error) {
+        console.error("Error deleting document:", error);
+        alert("Error deleting entry. Please try again.");
+      }
+    }
   };
-
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
     setHomeData([]);
@@ -162,7 +180,7 @@ function HomeForm() {
                   <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                  
                     <table className="min-w-full divide-y divide-gray-200">
-                      <thead className="bg-gray-50">
+                    <thead className="bg-gray-50">
                         <tr>
                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Date
@@ -172,8 +190,30 @@ function HomeForm() {
                           </th>
                           {/* Add other table headers here */}
                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Delete
+                            Number
                           </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Email
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Debt Amount
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Monthly Income
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Settlement
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Harasment
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Address
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Action
+                          </th>
+                          
                         </tr>
                       </thead>
                       <tbody>
