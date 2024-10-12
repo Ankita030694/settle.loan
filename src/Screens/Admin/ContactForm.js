@@ -41,7 +41,7 @@ function ContactForm() {
         id: doc.id,
       }));
 
-      newData.sort((a, b) => new Date(b.created) - new Date(a.created));
+      newData.sort((a, b) => b.created - a.created);
       setHomeData(newData);
       setFilteredHomeData(newData); // Set the filtered data to the full data initially
     } catch (error) {
