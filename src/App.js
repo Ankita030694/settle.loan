@@ -35,6 +35,7 @@ import NewBlogs from "./Screens/Blogs/NewBlogs";
 import FAQ from "./Screens/FAQ";
 import Banks from "./components/banks";
 import AppModal from "./Screens/Modals/AppModal";
+import NewThanks from "./Screens/NewThanks";
 function App() {
   return (
  <>
@@ -56,7 +57,8 @@ function App() {
           <Route path="/admin/home" element={ <HomeForm />}></Route>
           <Route path="/admin/contact" element={<ContactForm />}></Route>
           <Route path="*" element={<NotFound />}></Route>
-          <Route path="/thanks" element={<Thanks />}></Route>
+          {/* <Route path="/thanks" element={<Thanks />}></Route> */}
+          <Route path="/thanks" element={<NewThanks />}></Route>
         </Routes>
         <FooterTwo />
       </Router>
