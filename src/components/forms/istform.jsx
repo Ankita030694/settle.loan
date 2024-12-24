@@ -20,7 +20,8 @@ function SurveyComponent() {
         data['created'] = Date.now();
         try {
             await addDoc(collection(db, 'ContactPageForm'), data);
-            window.location.href = 'https://pmny.in/vrb1u30nOeZB'; 
+            // window.location.href = 'https://pmny.in/vrb1u30nOeZB';
+            window.location.href = '/thanks' 
         } catch (error) {
             console.error("Error adding document: ", error);
            
