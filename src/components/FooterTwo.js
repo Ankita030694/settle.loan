@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Pdf_one from "../documents/FAQ.pdf";
 import Pdf_two from "../documents/Privacy_Policy.pdf";
 import Pdf_three from "../documents/Terms_and_Conditions.pdf";
+import logo from '../assets/img/logo.png'
 
 
 const graphcms = new GraphQLClient(`${process.env.REACT_APP_GRAPH_API_KEY}`);
@@ -55,7 +56,7 @@ export const FooterTwo = () => {
               title="Company"
               className="inline-flex items-center"
             >
-              <img src="https://i.ibb.co/p2pWRRM/logo.png" alt="" />
+              <img className="w-[75%]" src={logo} alt="" />
             </a>
             <div className="mt-4 lg:max-w-sm">
               <p className="text-sm text-white">Settle Loans, Settle Life!</p>
