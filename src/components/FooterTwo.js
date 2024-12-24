@@ -180,7 +180,7 @@ export const FooterTwo = () => {
         <p className="text-sm text-gray-100">
             © Copyright 2020 Settle Loans. All rights reserved.
           </p><p className="text-sm text-gray-100">
-          Design with ❤️ by <a href={"https://softxionsoftware.co"}><b>SoftXion Software</b></a>
+          Design by <a href={"https://softxionsoftware.co"}><b>SoftXion Software</b></a>
           </p>
           {/* <div className="flex items-center mt-4 space-x-4 sm:mt-0">
             <a

@@ -69,7 +69,8 @@ function Hero() {
     // ...
 
     if (isValid) {
-      alert("Form Submitted successfully")
+      setLoader(true);
+      
     }
     console.log(isValid);
     const q = query(collection(db, "homefromrecord"), where("ip", "==", ipAddress));
