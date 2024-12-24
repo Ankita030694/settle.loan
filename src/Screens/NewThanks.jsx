@@ -13,12 +13,11 @@ const NewThanks = () => {
                     </p>
                 </div>
 
-                <div className=" flex justify-around ">
-                    <img className="w-96" src={paynow} alt="" />
-                    <img className="w-96" src={paylater} alt="" />
+                <div className="flex flex-col md:flex-row justify-around items-center gap-4">
+  <img className="w-96" src={paynow} alt="Pay Now" />
+  <img className="w-96" src={paylater} alt="Pay Later" />
+</div>
 
-                 
-                </div>
                 <div className="my-5 text-center">
                         <h4>Pay via PayU</h4>
                         {/* <img src={qrCode} alt="UPI QR Code" className="img-fluid mt-3" style={{ maxWidth: "200px" }} /> */}
