@@ -185,7 +185,7 @@ function Header() {
             <h3 className="offcanva-title">Get In Touch</h3>
             <div className="it-info-wrapper mb-20 d-flex align-items-center">
               <div className="itoffcanvas__info-icon">
-                <a href="#">
+                <a href="maito:hello@yourmail.com">
                   <i className="fal fa-envelope" />
                 </a>
               </div>
@@ -204,7 +204,7 @@ function Header() {
             </div>
             <div className="it-info-wrapper mb-20 d-flex align-items-center">
               <div className="itoffcanvas__info-icon">
-                <a href="#">
+                <a href="tel:+919821219819">
                   <i className="fal fa-phone-alt" />
                 </a>
               </div>
@@ -215,7 +215,7 @@ function Header() {
             </div>
             <div className="it-info-wrapper mb-20 d-flex align-items-center">
               <div className="itoffcanvas__info-icon">
-                <a href="#">
+                <a href="htits://www.google.com/maps/@37.4801311,22.8928877,3z">
                   <i className="fas fa-map-marker-alt" />
                 </a>
               </div>
