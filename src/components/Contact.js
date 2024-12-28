@@ -172,7 +172,7 @@ function Contact() {
                   >
                     <div className="contact__icon">
                       <span>
-                        <a href="#">
+                        <a href="tel:+919821219819">
                           <i className="fal fa-phone-alt" />
                         </a>
                       </span>
