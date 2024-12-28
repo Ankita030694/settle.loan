@@ -294,6 +294,9 @@ function Hero() {
             data-wow-delay=".7s"
           >
             <h3>Get Consultation</h3>
+            <div>
+                <h6 style={{color: "red", textAlign: "center"}}>WE DON'T PROVIDE LOAN / हम लोन नहीं देते*</h6>
+              </div>
             <div className="contact__section-title pb-10">
               <div className="form-div-hero">
                 <form onSubmit={formSubmitHandler} className="glass_form">
@@ -329,7 +332,7 @@ function Hero() {
                           type="number"
                           id="number"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                          placeholder="91XXXXXX"
+                          placeholder="91XXXXXXXXXX"
                           required
                           onChange={(e) => {
                             if (e.target.value.length <= 10) {
@@ -410,7 +413,7 @@ setNumberError("")
                         
                       
                         
-                          <option selected="">Choose a option</option>
+                          <option selected="">Choose an option</option>
                           <option value="Below 1 lakh">
                           Below 1 lakh
                           </option>
@@ -493,7 +496,7 @@ setNumberError("")
                           }}
                           className="mb-[20px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         >
-                          <option selected="">Choose a option</option>
+                          <option selected="">Choose an option</option>
                           <option value="Rs.2,000 in next 1-2days">
                             Yes I can arrange Rs.2,000 in next 1-2days
                           </option>
@@ -523,7 +526,7 @@ setNumberError("")
                           }}
                           className="mb-[20px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         >
-                          <option selected="">Choose a option</option>
+                          <option selected="">Choose an option</option>
                           <option value="Less than Rs. 15,000 per month">
                             Less than Rs. 15,000 per month
                           </option>
