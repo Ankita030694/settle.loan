@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./../assets/img/logo/logo.png";
 import { GraphQLClient, gql } from "graphql-request";
+import logo from "./../assets/img/logo/logowhite.png.png"
 
 const graphcms = new GraphQLClient(`${process.env.REACT_APP_GRAPH_API_KEY}`);
 
@@ -135,7 +136,7 @@ function Header() {
           </div>
           <div className="itoffcanvas__logo">
             <a href="/">
-              <img src="https://i.ibb.co/p2pWRRM/logo.png" alt="" />
+              <img src= {logo} alt="Image Not Available"  />
             </a>
           </div>
           <div className="itoffcanvas__text">
