@@ -15,24 +15,23 @@ function Contact() {
   const [loader, setLoader] = useState(false);
   // const collRef = collection(db, "contact-form");
   const formSubmitHandler = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setLoader(true);
 
     try {
-      await addDoc(collection(db, 'footerfromrecord'), {
+      await addDoc(collection(db, "footerfromrecord"), {
         name: name,
         email: email,
         number: number,
         message: message,
-        created: Date.now()
+        created: Date.now(),
       }).then((val) => {
         setLoader(true);
-        navigate('/thanks/' + val.id);
-      })
-
+        navigate("/thanks/" + val.id);
+      });
     } catch (error) {
       setLoader(false);
-      alert(error)
+      alert(error);
     }
     localStorage.setItem("formName", name);
     window.setTimeout(() => {
@@ -157,47 +156,53 @@ function Contact() {
                   </div>
                 </form>
               </div> */}
-              <SurveyComponent/>
+              <div style={{marginLeft: 35}}>
+                <h4 style={{color: "red"}}>*WE DON'T PROVIDE LOAN / हम लोन नहीं देते</h4>
+              </div>
+              <SurveyComponent />
             </div>
-            <div className="col-xl-4 col-lg-5" style={{paddingTop:'48px'}}>
+
+            <div className="col-xl-4 col-lg-5" style={{ paddingTop: "48px" }}>
               <div className="contact__left-side">
-                <div
-                  className="contact__item d-flex align-items-center wow tpfadeUp"
-                  data-wow-duration=".9s"
-                  data-wow-delay=".5s"
-                >
-                  <div className="contact__icon">
-                    <span>
-                      <a href="#">
-                        <i className="fal fa-phone-alt" />
-                      </a>
-                    </span>
+                <a href="tel:+919821219819">
+                  <div
+                    className="contact__item d-flex align-items-center wow tpfadeUp"
+                    data-wow-duration=".9s"
+                    data-wow-delay=".5s"
+                  >
+                    <div className="contact__icon">
+                      <span>
+                        <a href="#">
+                          <i className="fal fa-phone-alt" />
+                        </a>
+                      </span>
+                    </div>
+                    <div className="contact__content">
+                      <h4 className="contact__title-sm">Call Us Now</h4>
+                      <span>
+                        <a href="tel:+919821219819">
+                          +919821219819 <br />
+                        </a>
+                      </span>
+                    </div>
                   </div>
-                  <div className="contact__content">
-                    <h4 className="contact__title-sm">Call Us Now</h4>
-                    <span>
-                      <a href="tel:+919821219819">
-                        +919821219819 <br />
-                      </a>
-                    </span>
-                  </div>
-                </div>
-                <div
-                  className="contact__item d-flex align-items-center wow tpfadeUp"
-                  data-wow-duration=".9s"
-                  data-wow-delay=".7s"
-                >
-                  <div className="contact__icon">
-                    <span>
-                      <a href="#">
-                        <i className="fal fa-envelope-open-text" />
-                      </a>
-                    </span>
-                  </div>
-                  <div className="contact__content">
-                    <h4 className="contact__title-sm">Message Us</h4>
-                    <span>
-                      <a href="/cdn-cgi/l/email-protection#7c1d111d0e3c111d1510521f1311">
+                </a>
+                <a href="mailto:info@settleloans.in">
+                  <div
+                    className="contact__item d-flex align-items-center wow tpfadeUp"
+                    data-wow-duration=".9s"
+                    data-wow-delay=".7s"
+                  >
+                    <div className="contact__icon">
+                      <span>
+                        <a href="mailto:info@settleloans.in">
+                          <i className="fal fa-envelope-open-text" />
+                        </a>
+                      </span>
+                    </div>
+                    <div className="contact__content">
+                      <h4 className="contact__title-sm">Message Us</h4>
+                      <span>
                         <span
                           className="__cf_email__"
                           data-cfemail="ea8b878b98aa878b8386c4898587"
@@ -211,29 +216,34 @@ function Contact() {
                         >
                           legal@settleloans.in
                         </span> */}
-                      </a>
-                    </span>
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="contact__item d-flex align-items-center wow tpfadeUp"
-                  data-wow-duration=".9s"
-                  data-wow-delay=".9s"
-                >
-                  <div className="contact__icon">
-                    <span>
-                      <a href="#">
-                        <i className="fal fa-map-marker-check" />
-                      </a>
-                    </span>
+                </a>
+                <a href="mailto:info@settleloans.in">
+                  <div
+                    className="contact__item d-flex align-items-center wow tpfadeUp"
+                    data-wow-duration=".9s"
+                    data-wow-delay=".9s"
+                  >
+                    <div className="contact__icon">
+                      <span>
+                        <a href="#">
+                          <i className="fal fa-map-marker-check" />
+                        </a>
+                      </span>
+                    </div>
+                    <div className="contact__content">
+                      <h4 className="contact__title-sm">Our location</h4>
+                      <span>
+                        <a href="">
+                          Block G, Sushant Lok 2, Sector 57, Gurugram, Haryana
+                          122003
+                        </a>
+                      </span>
+                    </div>
                   </div>
-                  <div className="contact__content">
-                    <h4 className="contact__title-sm">Our location</h4>
-                    <span>
-                      <a href="">Block G, Sushant Lok 2, Sector 57, Gurugram, Haryana 122003</a>
-                    </span>
-                  </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
