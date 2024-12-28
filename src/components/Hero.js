@@ -8,7 +8,14 @@ import PELoader from "../Screens/Utils/PELoader";
 import validator from "validator";
 import Modal from "./Modal";
 import { db } from "../firebase";
-import { addDoc, collection, getDocs, Timestamp, where, query } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  Timestamp,
+  where,
+  query,
+} from "firebase/firestore";
 import { upload } from "@testing-library/user-event/dist/upload";
 
 function Hero() {
@@ -22,19 +29,23 @@ function Hero() {
   const [monthlyIncome, setMonthlyIncome] = useState();
   const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(true);
-  const [ipAddress, setIPAddress] = useState('')
-  const [disableButton, setDisableButton] = useState(false)
+  const [ipAddress, setIPAddress] = useState("");
+  const [disableButton, setDisableButton] = useState(false);
   const [emailError, setEmailError] = useState(false);
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState("");
   const [numberError, setNumberError] = useState(false);
+  const handleKeyDown = (event) => {
+    if (!/[a-z\s]/i.test(event.key)) {
+      event.preventDefault(); // Prevent non-alphabet characters (excluding space)
+    }
+  };
 
   useEffect(() => {
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => setIPAddress(data.ip))
-      .catch(error => console.log(error))
+    fetch("https://api.ipify.org?format=json")
+      .then((response) => response.json())
+      .then((data) => setIPAddress(data.ip))
+      .catch((error) => console.log(error));
   }, []);
-
 
   // const validatePhoneNumber = (number) => {
   //   const isValidPhoneNumber = validator.isMobilePhone(number);
@@ -46,7 +57,7 @@ function Hero() {
   //   return isValidEmail;
   // };
   const formSubmitHandler = async (e) => {
-    setDisableButton(true)
+    setDisableButton(true);
     e.preventDefault();
     setEmailError(true);
     setNumberError(true);
@@ -55,13 +66,13 @@ function Hero() {
 
     // Validate email
     if (!validator.isEmail(email)) {
-      setEmailError('Invalid email address');
+      setEmailError("Invalid email address");
       isValid = false;
     }
 
     // Validate number (assuming you want a numeric validation)
     if (!validator.isNumeric(number)) {
-      setNumberError('Invalid phone number');
+      setNumberError("Invalid phone number");
       isValid = false;
     }
 
@@ -70,39 +81,33 @@ function Hero() {
 
     if (isValid) {
       setLoader(true);
-      
     }
     console.log(isValid);
-    const q = query(collection(db, "homefromrecord"), where("ip", "==", ipAddress));
+    const q = query(
+      collection(db, "homefromrecord"),
+      where("ip", "==", ipAddress)
+    );
 
     const querySnapshot = await getDocs(q);
     if (querySnapshot.empty) {
-
       if (!validator.isNumeric(number)) {
-        setNumberError('Invalid phone number');
+        setNumberError("Invalid phone number");
         isValid = false;
         if (!validator.isEmail(email)) {
-          setEmailError('Invalid email address');
+          setEmailError("Invalid email address");
           isValid = false;
-          if (monthlyIncome == 'Choose a option') {
-            alert('InValid Monthly Income');
-          }
-          else if (settlementProcess == 'Choose a option') {
-            alert('Form Not filled Properly');
-
-          }
-          else {
+          if (monthlyIncome == "Choose a option") {
+            alert("InValid Monthly Income");
+          } else if (settlementProcess == "Choose a option") {
+            alert("Form Not filled Properly");
+          } else {
             UploadData();
-
           }
-
         } else {
-          alert('InValid Email');
+          alert("InValid Email");
         }
-
-      }
-      else {
-        alert('InValid Phone number');
+      } else {
+        alert("InValid Phone number");
       }
       if (isValid) {
         // Submit the form or perform other actions
@@ -111,7 +116,7 @@ function Hero() {
     }
     if (isValid) {
       isValid(true);
-      console.log("okey")
+      console.log("okey");
     }
     // else {
     //   alert('Already Uploaded');
@@ -133,13 +138,11 @@ function Hero() {
     //   console.log(doc.id, " => ", doc.data());
 
     // });
-    setDisableButton(false)
+    setDisableButton(false);
   };
   async function UploadData() {
-
     try {
-     
-      await addDoc(collection(db, 'homefromrecord'), {
+      await addDoc(collection(db, "homefromrecord"), {
         name: name,
         email: email,
         number: number,
@@ -149,16 +152,15 @@ function Hero() {
         monthlyIncome: monthlyIncome,
         date: Date.now(),
         ip: ipAddress,
-        address:address
+        address: address,
       }).then((val) => {
         // window.location.href = 'https://pmny.in/vrb1u30nOeZB'
-        navigate('/thanks');
+        navigate("/thanks");
         setLoader(true);
-        console.log(val.id)
-      })
-
+        console.log(val.id);
+      });
     } catch (error) {
-      alert(error)
+      alert(error);
     }
     window.setTimeout(() => {
       setLoader(false);
@@ -295,8 +297,10 @@ function Hero() {
           >
             <h3>Get Consultation</h3>
             <div>
-                <h6 style={{color: "red", textAlign: "center"}}>WE DON'T PROVIDE LOAN / हम लोन नहीं देते*</h6>
-              </div>
+              <h6 style={{ color: "red", textAlign: "center" }}>
+                WE DON'T PROVIDE LOAN / हम लोन नहीं देते*
+              </h6>
+            </div>
             <div className="contact__section-title pb-10">
               <div className="form-div-hero">
                 <form onSubmit={formSubmitHandler} className="glass_form">
@@ -310,6 +314,7 @@ function Hero() {
                           Name
                         </label>
                         <input
+                          onKeyDown={handleKeyDown}
                           type="text"
                           id="first_name"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -328,7 +333,7 @@ function Hero() {
                           Number
                         </label>
                         <input
-                        value={number}
+                          value={number}
                           type="number"
                           id="number"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -336,16 +341,18 @@ function Hero() {
                           required
                           onChange={(e) => {
                             if (e.target.value.length <= 10) {
-                           
-                               setNumber(e.target.value);
-setNumberError("")
-                            }else{
-                              setNumberError("Number can only contain 10 Digits")
+                              setNumber(e.target.value);
+                              setNumberError("");
+                            } else {
+                              setNumberError(
+                                "Number can only contain 10 Digits"
+                              );
                             }
-                     
                           }}
                         />
-                        {numberError && <p className="text-red-500">{numberError}</p>}
+                        {numberError && (
+                          <p className="text-red-500">{numberError}</p>
+                        )}
                       </div>
                     </div>
                     <div className="mb-6">
@@ -365,14 +372,16 @@ setNumberError("")
                           setEmail(e.target.value);
                         }}
                       />
-                      {emailError && <p className="text-red-500">{emailError}</p>}
+                      {emailError && (
+                        <p className="text-red-500">{emailError}</p>
+                      )}
                     </div>
                     <div className="mb-6">
                       <label
                         htmlFor="address"
                         className="block mb-2 text-sm font-medium text-gray-900"
                       >
-                       Address
+                        Address
                       </label>
                       <input
                         type="text"
@@ -387,11 +396,7 @@ setNumberError("")
                       />
                     </div>
 
-
-
-
-
-<div className="col-sm-12">
+                    <div className="col-sm-12">
                       <div className="postbox__contact-input">
                         <label
                           htmlFor="TotalDebtAmount"
@@ -407,35 +412,17 @@ setNumberError("")
                           }}
                           className="mb-[20px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         >
-                       
-                       
-                       
-                        
-                      
-                        
                           <option selected="">Choose an option</option>
-                          <option value="Below 1 lakh">
-                          Below 1 lakh
-                          </option>
-                          <option value=" 1 - 2 Lakhs ">
-                          1 - 2 Lakhs 
-                          </option>
-                          <option value="2 - 5 Lakhs">
-                          2 - 5 Lakhs
-                          </option>
-                          <option value=" 5 - 8 Lakhs">
-                          5 - 8 Lakhs
-                          </option>
-                          <option value="8 - 10 Lakhs">
-                          8 - 10 Lakhs
-                          </option>
-                          <option value="  10 and above ">
-                          10 and above 
-                          </option>
+                          <option value="Below 1 lakh">Below 1 lakh</option>
+                          <option value=" 1 - 2 Lakhs ">1 - 2 Lakhs</option>
+                          <option value="2 - 5 Lakhs">2 - 5 Lakhs</option>
+                          <option value=" 5 - 8 Lakhs">5 - 8 Lakhs</option>
+                          <option value="8 - 10 Lakhs">8 - 10 Lakhs</option>
+                          <option value="  10 and above ">10 and above</option>
                         </select>
                       </div>
                     </div>
-{/*  */}
+                    {/*  */}
                     {/* <div className="col-sm-6">
                       <div className="postbox__contact-input">
                         <input
@@ -647,9 +634,9 @@ setNumberError("")
                       data-wow-delay="1.1s"
                     >
                       <button
-                        style={disableButton ? { display: 'none' } : {}}
+                        style={disableButton ? { display: "none" } : {}}
                         type="submit"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 "
                       >
                         Submit
                       </button>
