@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import Pdf_one from "../documents/FAQ.pdf";
 import Pdf_two from "../documents/Privacy_Policy.pdf";
 import Pdf_three from "../documents/Terms_and_Conditions.pdf";
-import logo from '../assets/img/logo.png'
-
+import logo from "../assets/img/logo.png";
 
 const graphcms = new GraphQLClient(`${process.env.REACT_APP_GRAPH_API_KEY}`);
 
@@ -13,7 +12,7 @@ const QUERY = gql`
   {
     services {
       title
-    
+
       slug
       des
       coverPhoto {
@@ -92,7 +91,7 @@ export const FooterTwo = () => {
               <ul className="mt-2 space-y-2">
                 <li>
                   <a
-                    href='/html/terms-and-conditions.html'
+                    href="/html/terms-and-conditions.html"
                     target="_blank"
                     className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
                   >
@@ -101,15 +100,13 @@ export const FooterTwo = () => {
                 </li>
                 <li>
                   <a
-                    href='/html/privacy-policy.html'
-
+                    href="/html/privacy-policy.html"
                     target="_blank"
                     className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
                   >
                     Privacy Policy
                   </a>
                 </li>
-
               </ul>
             </div>
             <div>
@@ -118,70 +115,113 @@ export const FooterTwo = () => {
               </p>
               <ul className="mt-2 space-y-2">
                 <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
-                  >
+                  <p className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400">
                     Delhi
-                  </a>
+                  </p>
                 </li>
                 <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
-                  >
+                  <p className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400">
                     Noida
-                  </a>
+                  </p>
                 </li>
                 <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
-                  >
+                  <p className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400">
                     Gurugram
-                  </a>
+                  </p>
                 </li>
                 <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
-                  >
+                  <p className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400">
                     Pune
-                  </a>
+                  </p>
                 </li>
                 <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
-                  >
+                  <p className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400">
                     Mumbai
-                  </a>
+                  </p>
                 </li>
                 <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
-                  >
+                  <p className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400">
                     Chennai
-                  </a>
+                  </p>
                 </li>
                 <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400"
-                  >
+                  <p className="transition-colors duration-300 text-gray-300 hover:text-teal-accent-400">
                     Bengaluru
-                  </a>
+                  </p>
                 </li>
               </ul>
+            </div>
+            <div className="getInTouch">
+              <p className="font-semibold tracking-wide text-yellow-400">
+                Get In Touch
+              </p>
+              <div className="it-info-wrapper mb-20 d-flex align-items-center">
+                <div className="itoffcanvas__info-icon-updated">
+                  <a href="maito:hello@yourmail.com">
+                    <i
+                      className="fal fa-envelope"
+                      style={{ "font-size": 14 }}
+                    />
+                  </a>
+                </div>
+                <div className="itoffcanvas__info-address">
+                  <span>Email</span>
+                  <a
+                    href="maito:hello@yourmail.com"
+                    style={{ "font-size": 14 }}
+                  >
+                    info@settleloans.in
+                  </a>
+                </div>
+              </div>
+              <div className="it-info-wrapper mb-20 d-flex align-items-center">
+                <div className="itoffcanvas__info-icon-updated">
+                  <a href="tel:+919821219819">
+                    <i
+                      className="fal fa-phone-alt"
+                      style={{ "font-size": 14 }}
+                    />
+                  </a>
+                </div>
+                <div className="itoffcanvas__info-address">
+                  <span>Phone</span>
+                  <a href="tel:+919821219819" style={{ "font-size": 14 }}>
+                    +919821219819
+                  </a>
+                </div>
+              </div>
+              <div className="it-info-wrapper mb-20 d-flex align-items-center">
+                <div className="itoffcanvas__info-icon-updated">
+                  <a href="htits://www.google.com/maps/@37.4801311,22.8928877,3z">
+                    <i
+                      className="fas fa-map-marker-alt"
+                      style={{ "font-size": 14 }}
+                    />
+                  </a>
+                </div>
+                <div className="itoffcanvas__info-address">
+                  <span>Location</span>
+                  <a
+                    href="htits://www.google.com/maps/@37.4801311,22.8928877,3z"
+                    target="_blank"
+                    style={{ "font-size": 14 }}
+                  >
+                    PAN India
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div className="flex flex-col justify-between pt-5 pb-10 border-t border-deep-purple-accent-200 sm:flex-row">
-        <p className="text-sm text-gray-100">
+          <p className="text-sm text-gray-100">
             © Copyright 2020 Settle Loans. All rights reserved.
-          </p><p className="text-sm text-gray-100">
-          Design by <a href={"https://softxionsoftware.co"}><b>SoftXion Software</b></a>
+          </p>
+          <p className="text-sm text-gray-100">
+            Design by{" "}
+            <a href={"https://softxionsoftware.co"}>
+              <b>SoftXion Software</b>
+            </a>
           </p>
           {/* <div className="flex items-center mt-4 space-x-4 sm:mt-0">
             <a
