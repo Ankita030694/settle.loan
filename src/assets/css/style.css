@@ -2086,6 +2086,20 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   margin-right: 20px;
 }
 
+.itoffcanvas__info-icon-updated a {
+  height: 38px;
+  width: 38px;
+  background-color: var(--it-theme-1);
+  color: var(--it-common-black);
+  display: inline-block;
+  text-align: center;
+  line-height: 36px;
+  border-radius: 50px;
+  font-weight: 400;
+  font-size: 21px;
+  margin-right: 20px;
+}
+
 .itoffcanvas__info-address span {
   display: block;
   color: rgba(255, 255, 255, 0.6392156863);
@@ -2130,7 +2144,9 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   color: var(--it-common-black);
   padding-bottom: 15px;
 }
-
+.getInTouch{
+  width: auto;
+}
 @media only screen and (min-width: 1400px) and (max-width: 1599px) {
   .breadcrumb__title {
     font-size: 41px;
