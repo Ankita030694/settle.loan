@@ -297,7 +297,7 @@ function Hero() {
           >
             <h3>Get Consultation</h3>
             <div>
-              <h6 style={{ color: "red", textAlign: "center" }}>
+              <h6 style={{ color: "blue", textAlign: "center" }}>
                 WE DON'T PROVIDE LOAN / हम लोन नहीं देते*
               </h6>
             </div>
