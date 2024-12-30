@@ -157,7 +157,7 @@ function Contact() {
                 </form>
               </div> */}
               <div style={{marginLeft: 35}}>
-                <h4 style={{color: "red"}}>*WE DON'T PROVIDE LOAN / हम लोन नहीं देते</h4>
+                <h4 style={{color: "blue"}}>*WE DON'T PROVIDE LOAN / हम लोन नहीं देते</h4>
               </div>
               <SurveyComponent />
             </div>
