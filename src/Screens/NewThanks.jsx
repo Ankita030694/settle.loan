@@ -1,10 +1,14 @@
 import React from "react";
 import paynow from '../assets/img/paynow.png'
 import paylater from '../assets/img/paylater.png'
+import Header from "../components/Header";
+import SocialHeader from "../components/socialheader";
 const NewThanks = () => {
     return (
         <div>
             {/* Main Content */}
+            <SocialHeader />
+      <Header />{" "}
             <div className="container mt-5 pt-5">
                 <div className="text-center my-5">
                     <h1>Thank You for Submitting the form</h1>
