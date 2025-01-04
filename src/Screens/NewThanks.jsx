@@ -10,7 +10,7 @@ const NewThanks = () => {
             
             <SocialHeader />
       <Header />{" "}
-            <div className="container mt-30 pt-5">
+            <div className="container mt-40 pt-5">
                 <div className="text-center my-5">
                     <h1>Thank You for Submitting the form</h1>
                     <p className="mt-3">
